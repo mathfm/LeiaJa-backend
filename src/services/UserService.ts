@@ -4,22 +4,23 @@ import { UserRepository } from "../repositories/UserRepository.js";
 
 export class UserService implements IUserService {
 
-    constructor(private readonly userRepository: UserRepository) {}
-    updateUser(id: number, user: IUser): void {
-        throw new Error("Method not implemented.");
+    constructor(private readonly userRepository: UserRepository) { }
+    async updateUser(id: number, user: IUser): Promise<boolean> {
+        return await this.userRepository.update(id, user);
     }
-    deleteUser(id: number): void {
-        throw new Error("Method not implemented.");
+    async deleteUser(id: number): Promise<boolean> {
+        return await this.userRepository.delete(id);
     }
-    getUserById(id: number): Promise<boolean | IUser> {
-        throw new Error("Method not implemented.");
+    async getUserById(id: number): Promise<false | IUser> {
+        return await this.userRepository.findById(id);
     }
 
     async createUser({ email, name, password }: IUser) {
-        await this.userRepository.create({email, name, password})
-        return "Registro criado com sucesso";
+        try {
+            await this.userRepository.create({ email, name, password })
+            return "Registro criado com sucesso";
+        } catch (error) {
+            return error;
+        }
     }
-
-
-
 }

@@ -21,6 +21,13 @@ app.post("/create-user", async (req, res) => {
     res.send(result);
 })
 
+app.get("/user/:id", async (req, res) => { 
+    const { id } = req.params;
+    const service = new UserService(new UserRepository());
+    const result = await service.getUserById(Number(id));
+    res.send(result);
+})
+
 
 
 app.listen(process.env.PORT, () => {

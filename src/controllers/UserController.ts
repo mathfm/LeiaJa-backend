@@ -3,9 +3,14 @@ import { Request, Response } from "express";
 import { UserRepository } from '../repositories/UserRepository.js';
 
 export class UserController {    
-    // async createUser(req: Request, res: Response) {
-    //     const { name, email, password } = req.body;
-    //     const user = await this.userService.createUser({ name, email, password });
-    //     return res.status(201).json(user);
-    // }
+
+    constructor(private readonly userService: UserService) {}
+
+    async createUser(req: Request, res: Response) {
+        const { name, email, password } = req.body;
+        const user = await this.userService.createUser({ name, email, password });
+        return res.status(201).json(user);
+    }
+
+    
 }
