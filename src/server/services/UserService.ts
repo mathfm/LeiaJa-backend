@@ -2,6 +2,7 @@ import { IUser } from "../interfaces/IUser.js";
 import { IUserService } from "../interfaces/IUserService.js";
 import { UserRepository } from "../repositories/UserRepository.js";
 
+
 export class UserService implements IUserService {
 
     constructor(private readonly userRepository: UserRepository) { }

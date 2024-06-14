@@ -1,35 +1,33 @@
 import dotenv from "dotenv";
-import express from "express";
-import { UserService } from "./services/UserService.js";
-import { UserRepository } from "./repositories/UserRepository.js";
+import { createUserController } from "./server/adapter/createUserController.js";
+import { App } from "./server/app.js";
+import { createBookController } from "./server/adapter/createBookController.js";
 
 
 dotenv.config();
-const app = express();
-app.use(express.json());
+// export const app = express();
+// app.use(express.json());
+// const userController = createUserController();
 
+const index = new App(
+    createUserController(),
+    createBookController()
+);
 
-app.get("/", (req, res) => {
-    res.send("Hello World");
-});
-
-
-app.post("/create-user", async (req, res) => { 
-    const { email, name, password } = req.body;
-    const service = new UserService(new UserRepository());
-    const result = await service.createUser({ email, name, password });
-    res.send(result);
-})
-
-app.get("/user/:id", async (req, res) => { 
-    const { id } = req.params;
-    const service = new UserService(new UserRepository());
-    const result = await service.getUserById(Number(id));
-    res.send(result);
-})
-
-
-
-app.listen(process.env.PORT, () => {
+index.app.listen(process.env.PORT, () => {
     console.log("Server is running " + process.env.PORT);
 });
+
+// app.post("/user/create", async (req, res) => userController.createUser(req, res));
+
+// app.get("/user/:id", async (req, res) => userController.getUserById(req, res));
+
+// app.put("/user/:id/update", async (req, res) => userController.updateUser(req, res));
+
+// app.delete("/user/:id/delete", async (req, res) => userController.deleteUser(req, res));
+
+
+
+// app.listen(process.env.PORT, () => {
+//     console.log("Server is running " + process.env.PORT);
+// });

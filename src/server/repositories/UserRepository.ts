@@ -46,7 +46,6 @@ export class UserRepository implements IUserRepository {
             return false; 
         }
     } catch (error) {
-        console.error("Erro ao consultar usuário por ID:", error);
         return false; 
     }
 }

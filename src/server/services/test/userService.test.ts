@@ -1,7 +1,8 @@
 import { expect, it, vi, describe, beforeEach } from 'vitest'
 import { UserService } from '../UserService.js';
-import { UserRepository } from '../../repositories/UserRepository.js';
 import { IUser } from '../../interfaces/IUser.js';
+import { UserRepository } from '../../repositories/UserRepository.js';
+
 
 
 
