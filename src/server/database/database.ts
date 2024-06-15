@@ -26,4 +26,5 @@ export const consult = async (sql: string, values: any[], msgReject = "Ocorreu u
     }
 };
 
+
 // docker run --name root -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root -d mysql
