@@ -1,6 +1,6 @@
-import { IBook } from '../interfaces/IBook.js';
+import { IBook } from '../interfaces/Book/IBook.js';
 import { BookRepository } from '../repositories/BookRepository.js';
-import { IBookService } from '../interfaces/IBookService.js';
+import { IBookService } from '../interfaces/Book/IBookService.js';
 import { Genre } from '../utils/generUtil.js';
 export class BookService implements IBookService {
 

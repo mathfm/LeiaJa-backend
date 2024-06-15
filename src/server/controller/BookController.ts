@@ -1,7 +1,7 @@
-import { IBook } from "../interfaces/IBook.js";
+import { IBook } from "../interfaces/Book/IBook.js";
 import { BookService } from "../services/BookService.js";
 import { Request, Response } from 'express';
-import { Genre } from "../utils/generUtil.js";
+
 
 export class BookController {
     constructor(private readonly bookService: BookService) { }

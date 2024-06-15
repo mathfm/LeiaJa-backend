@@ -1,5 +1,5 @@
-import { IUser } from "../interfaces/IUser.js";
-import { IUserService } from "../interfaces/IUserService.js";
+import { IUser } from "../interfaces/User/IUser.js";
+import { IUserService } from "../interfaces/User/IUserService.js";
 import { UserRepository } from "../repositories/UserRepository.js";
 
 

@@ -6,3 +6,5 @@ export interface IOrders {
     total_price: number;
     balance: number
 }
+
+export type status = IOrders["status"];

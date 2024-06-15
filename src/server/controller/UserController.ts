@@ -1,7 +1,7 @@
 
 import { Request, Response } from "express";
 import { UserService } from "../services/UserService.js";
-import { IUser } from "../interfaces/IUser.js";
+import { IUser } from "../interfaces/User/IUser.js";
 
 export class UserController {    
 

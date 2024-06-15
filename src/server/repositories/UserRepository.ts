@@ -1,6 +1,6 @@
 import { consult } from "../database/database.js";
-import { IUser } from "../interfaces/IUser.js";
-import { IUserRepository } from "../interfaces/IUserRepository.js";
+import { IUser } from "../interfaces/User/IUser.js";
+import { IUserRepository } from "../interfaces/User/IUserRepository.js";
 
 
 

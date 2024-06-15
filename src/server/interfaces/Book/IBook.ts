@@ -1,4 +1,5 @@
-import { Genre } from '../utils/generUtil.js';
+import { Genre } from "../../utils/generUtil.js";
+
 export interface IBook {
     title: string;
     author: string;

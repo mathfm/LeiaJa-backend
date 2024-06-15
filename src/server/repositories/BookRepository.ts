@@ -1,6 +1,6 @@
 import { consult } from "../database/database.js";
-import { IBook } from "../interfaces/IBook.js";
-import { IBookRepository } from "../interfaces/IBookRepository.js";
+import { IBook } from "../interfaces/Book/IBook.js";
+import { IBookRepository } from "../interfaces/Book/IBookRepository.js";
 
 export class BookRepository implements IBookRepository {
     async create(book: IBook): Promise<boolean> {
