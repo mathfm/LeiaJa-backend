@@ -1,5 +1,6 @@
 import { Router, Request, Response } from 'express';
 import { UserController } from "../controller/UserController.js";
+import { checkToken } from '../middlwares/checkToken.js';
 
 export class UserRouter {
     public router: Router;
@@ -14,16 +15,21 @@ export class UserRouter {
             await this.userController.createUser(req, res);
         });
 
-        this.router.get("/user/:id", async (req: Request, res: Response) => {
+        this.router.get("/user/:id", checkToken, async (req: Request, res: Response) => {
             await this.userController.getUserById(req, res);
         });
 
-        this.router.put("/user/:id/update", async (req: Request, res: Response) => {
+        this.router.put("/user/:id/update", checkToken, async (req: Request, res: Response) => {
             await this.userController.updateUser(req, res);
         });
 
-        this.router.delete("/user/:id/delete", async (req: Request, res: Response) => {
+        this.router.delete("/user/:id/delete", checkToken, async (req: Request, res: Response) => {
             await this.userController.deleteUser(req, res);
         });
+
+        this.router.post("/user/login", async (req: Request, res: Response) => {
+            await this.userController.login(req, res);
+        });
+
     }
 }

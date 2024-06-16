@@ -39,22 +39,4 @@ export class BookController {
         return res.json(bookUpdated);
     }
 
-    async getBookByTitle(req: Request, res: Response) {
-        const { title } = req.params;
-        const book = await this.bookService.findByTitle(title);
-        return res.json(book);
-    }
-
-    async getBookByAuthor(req: Request, res: Response) {
-        const { author } = req.params;
-        const book = await this.bookService.findByAuthor(author);
-        return res.json(book);
-    }
-
-    async getBookByGenre(req: Request, res: Response) {
-        const { genre } = req.body;
-        const book = await this.bookService.findByGenre(genre);
-        return res.json(book);
-    }
-
 }

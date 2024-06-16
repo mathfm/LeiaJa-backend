@@ -7,5 +7,5 @@ export interface IOrderService {
     update(id:number, status: status): Promise<boolean>;
     delete(user_id: number): Promise<boolean>;
     getAll(user_id: number): Promise<IOrders[]>;
-
+    
 }

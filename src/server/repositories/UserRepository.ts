@@ -5,7 +5,7 @@ import { IUserRepository } from "../interfaces/User/IUserRepository.js";
 
 
 export class UserRepository implements IUserRepository {
-    constructor() {}
+    constructor() { }
     async create({ name, email, password }: IUser) {
         const sql = `INSERT INTO tb_user (name, email, password) VALUES (?, ?, ?)`;
         const values = [name, email, password];
@@ -35,19 +35,35 @@ export class UserRepository implements IUserRepository {
     }
 
     async findById(id: number): Promise<IUser | false> {
-    const sql = `SELECT * FROM tb_user WHERE id = ?`;
-    const values = [id];
+        const sql = `SELECT * FROM tb_user WHERE id = ?`;
+        const values = [id];
 
-    try {
-        const result = await consult(sql, values, "Id não localizado");
-        if (Array.isArray(result) && result.length > 0) {
-            return result[0] as IUser;
-        } else {
-            return false; 
+        try {
+            const result = await consult(sql, values, "Id não localizado");
+            if (Array.isArray(result) && result.length > 0) {
+                return result[0] as IUser;
+            } else {
+                return false;
+            }
+        } catch (error) {
+            return false;
         }
-    } catch (error) {
-        return false; 
     }
-}
 
+    async login(email: string, password: string): Promise<Boolean> {
+        const sql = `SELECT * FROM tb_user WHERE email = ? AND password = ?`;
+        const values = [email, password];
+
+        try {
+            const result = await consult(sql, values);
+            if (Array.isArray(result) && result.length > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (error) {
+            throw new Error("Não foi possível executar o login");
+        }
+
+    }
 }

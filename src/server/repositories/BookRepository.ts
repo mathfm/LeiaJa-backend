@@ -71,32 +71,4 @@ export class BookRepository implements IBookRepository {
             return false;
         }
     }
-    async findByTitle(title: string): Promise<boolean | IBook[]> {
-        try {
-            const sql = `SELECT * FROM tb_books WHERE title = ?`;
-            const values = [title];
-            return await consult(sql, values) as IBook[];
-        } catch (error) {
-            return false;
-        }
-    }
-    async findByAuthor(author: string): Promise<boolean | IBook[]> {
-        try {
-            const sql = `SELECT * FROM tb_books WHERE author = ?`;
-            const values = [author];
-            return await consult(sql, values) as IBook[];
-        } catch (error) {
-            return false;
-        }
-    }
-    async findByGenre(genre: string): Promise<boolean | IBook[]> {
-        try {
-            const sql = `SELECT * FROM tb_books WHERE genre = ?`;
-            const values = [genre];
-            return await consult(sql, values) as IBook[];
-        } catch (error) {
-            return false;
-        }
-    }
-
 }

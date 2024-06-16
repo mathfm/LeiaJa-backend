@@ -1,7 +1,7 @@
 import { IBook } from '../interfaces/Book/IBook.js';
 import { BookRepository } from '../repositories/BookRepository.js';
 import { IBookService } from '../interfaces/Book/IBookService.js';
-import { Genre } from '../utils/generUtil.js';
+
 export class BookService implements IBookService {
 
     constructor(private readonly bookRepository: BookRepository) { }
@@ -20,15 +20,5 @@ export class BookService implements IBookService {
     async findAll(): Promise<boolean | IBook[]> {
         return await this.bookRepository.findAll();
     }
-    async findByTitle(title: string): Promise<boolean | IBook[]> {
-        return await this.bookRepository.findByTitle(title);
-    }
-    async findByAuthor(author: string): Promise<boolean | IBook[]> {
-        return await this.bookRepository.findByAuthor(author);
-    }
-    async findByGenre(genre: Genre): Promise<boolean | IBook[]> {
-        return await this.bookRepository.findByGenre(genre);
-    }
-    
     
 }

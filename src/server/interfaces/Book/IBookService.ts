@@ -8,7 +8,4 @@ export interface IBookService {
     delete(id: number): Promise<boolean>;
     findById(id: number): Promise<IBook | boolean>;
     findAll(): Promise<IBook[] | boolean>;
-    findByTitle(title: string): Promise<IBook[] | boolean>;
-    findByAuthor(author: string): Promise<IBook[] | boolean>;
-    findByGenre(genre: Genre): Promise<IBook[] | boolean>;
 }

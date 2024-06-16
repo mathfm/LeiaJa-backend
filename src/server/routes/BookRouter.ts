@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { BookController } from '../controller/BookController.js';
 
+
 export class BookRouter {
     public router: Router;
 

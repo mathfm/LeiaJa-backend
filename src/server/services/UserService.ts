@@ -1,3 +1,4 @@
+import jwt from "jsonwebtoken";
 import { IUser } from "../interfaces/User/IUser.js";
 import { IUserService } from "../interfaces/User/IUserService.js";
 import { UserRepository } from "../repositories/UserRepository.js";
@@ -24,4 +25,23 @@ export class UserService implements IUserService {
             return error;
         }
     }
+
+    async login(email: string, password: string): Promise<{ msg: "authorization"; token: string; } | false> {
+        try {
+            if (await this.userRepository.login(email, password)) {
+
+                const secret = process.env.TOKEN as string;
+                const token = jwt.sign({ email }, secret);
+
+                return { msg: "authorization", token: token }; 
+
+            }
+
+            return false;
+        } catch (error) {
+            throw new Error("Falha a tentar executar o login");
+        }
+        
+    }
+
 }

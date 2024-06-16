@@ -32,4 +32,13 @@ export class UserController {
         return res.status(200).json(user);
     }
 
+    async login(req: Request, res: Response) {
+        const { email, password } = req.body;
+        const user = await this.userService.login(email, password);
+        if (!user) {
+            return res.status(401).json("Email ou senha invalido.");
+        }
+        return res.status(200).json(user);
+    }
+
 }
